@@ -1,43 +1,67 @@
-# LOSTMIND Automation
+# LOSTMIND Video Studio
 
-## Purpose
-Plan the automation layer connecting Telegram, n8n, and the LOSTMIND core engine.
+A modular, free-first project for planning and building AI-assisted video editing and Reels automation.
 
-## Planned Components
-- Telegram Bot: receive commands and return status messages.
-- n8n: orchestrate workflows and connect services.
-- LOSTMIND Core: validate requests and route them to the correct module.
-- Shared Renderer: produce the final video when the required assets are available.
-- Human Review: approve the output before publishing.
+## Project Goal
+Build a system that can help prepare vertical videos through reusable workflows, shared rendering tools, and human review.
 
-## Planned Commands
-- /start — show the welcome message and available commands.
-- /help — explain how to use the bot.
-- /rawvideo — start the raw-video editing workflow.
-- /faceless — start the faceless Reels workflow.
-- /explorer — start the cinematic explorer workflow.
-- /status — show the current job status.
+## Core Workflows
 
-## Workflow Outline
-1. Receive a Telegram command.
-2. Validate the command and required inputs.
-3. Start the corresponding n8n workflow.
-4. Track the job and report progress.
-5. Send the generated video or a result link when available.
-6. Require human approval before publishing.
+### 1. Raw Video Editing
+- Transcribe recorded video
+- Plan cuts and captions
+- Organize B-roll and sound design
+- Render a vertical MP4
 
-## Security
-- Keep bot tokens, API keys, and passwords out of GitHub files.
-- Store credentials in n8n credentials or environment variables.
-- Validate user input and restrict bot access where needed.
-- Do not publish or spend money without the configured approval rules.
+### 2. Faceless AI Reels
+- Develop a topic and script
+- Prepare scenes and visual assets
+- Add voiceover, captions, and audio
+- Render a vertical MP4
+
+### 3. Cinematic Explorer Reels
+- Establish the environment before revealing a mystery
+- Use believable explorer-style footage and natural camera movement
+- Build suspense gradually with environmental sound
+- Render a vertical MP4
+
+## Planned Architecture
+Telegram Bot → n8n Automation → LOSTMIND Core → Selected Workflow → Shared Renderer → Human Review
+
+## Repository Structure
+- `docs/` — project documentation
+- `modules/raw-video/` — raw-video workflow plan
+- `modules/faceless-reels/` — faceless Reels workflow plan
+- `modules/cinematic-explorer/` — cinematic explorer workflow plan
+- `renderer/` — shared rendering plan using HyperFrames and FFmpeg
+- `automation/` — Telegram and n8n automation plan
+
+## Planned Technology
+- GitHub — source control and project documentation
+- Telegram Bot — command interface
+- n8n — workflow orchestration
+- HyperFrames — video composition and graphics
+- FFmpeg — video and audio processing
+- Optional AI services — transcription, script generation, voiceover, and visual assets
+
+## Design Principles
+- Start with free or low-cost tools where practical
+- Keep the modules separate and reusable
+- Protect API keys and credentials
+- Use properly licensed or user-owned media
+- Require human review before publishing
 
 ## Current Status
-Planning only. The Telegram Bot, n8n workflows, credentials, and integrations have not yet been implemented or tested.
+Documentation and project planning stage. The modules, integrations, rendering scripts, and automated publishing are not yet implemented or verified.
 
-## Next Steps
-1. Create a Telegram bot using BotFather.
-2. Set up an n8n instance.
-3. Connect Telegram to n8n.
-4. Test a simple /start or /help workflow.
-5. Add LOSTMIND module routing and job-status updates.
+## Development Roadmap
+1. Finish the project structure and documentation.
+2. Prepare the development PC and install required tools.
+3. Build and test a minimal rendering workflow.
+4. Connect Telegram to n8n.
+5. Implement and test each video workflow separately.
+6. Add output validation and human approval.
+7. Add publishing integrations only after successful tests.
+
+## Security
+Never commit API keys, bot tokens, passwords, or private credentials to this repository.
